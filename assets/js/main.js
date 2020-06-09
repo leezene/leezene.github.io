@@ -1,44 +1,16 @@
-const app = document.getElementById('app');
+fetch("https://api.github.com/users/leezene")
+    .then(response => response.json())
+    .then(function(data){
+        document.getElementById('user-avatar').src = data['avatar_url'];
+        document.getElementById('user-username').textContent = `@${data['login']}`;
+        document.getElementById('user-fullname').textContent = data['name'];
+        document.getElementById('user-followerCounts').textContent = `${data['followers']} followers`;
+    });
 
-const userProfileContainer = document.createElement('div');
-userProfileContainer.setAttribute('class', 'jumbotron text-center')
-app.appendChild(userProfileContainer);
-
-const repoContainer = document.createElement('div');
-repoContainer.setAttribute('class', 'container bg-light')
-
-const repoRow = document.createElement('div');
-repoRow.setAttribute('class', 'row')
-
-app.appendChild(repoContainer);
-repoContainer.appendChild(repoRow);
-
-//Get User Information
-let userRequest = new XMLHttpRequest();
-userRequest.headers = 'Access-Control-Allow-Origin: *';
-userRequest.open('GET', 'https://api.github.com/users/leezene', true);
-userRequest.onload = function () {
-    let data = JSON.parse(this.response);
-    if (userRequest.status >= 200 && userRequest.status < 400) {
-
-        const img = document.createElement('img');
-        img.setAttribute('class', 'rounded-circle avatar-lg')
-        img.src = data.avatar_url;
-
-        const p = document.createElement('p');
-        p.textContent = `@${data.login}`;
-
-        const h3 = document.createElement('h3');
-        h3.textContent = data.name;
+const repoCard = document.getElementById('repoContainer');
 
 
-        userProfileContainer.appendChild(img);
-        userProfileContainer.appendChild(p);
-        userProfileContainer.appendChild(h3);
-    }
-}
-
-//Get User Information
+// //Get User Information
 let repoRequest = new XMLHttpRequest();
 repoRequest.headers = 'Access-Control-Allow-Origin: *';
 repoRequest.open('GET', 'https://api.github.com/users/leezene/repos', true);
@@ -46,14 +18,11 @@ repoRequest.onload = function () {
     let data = JSON.parse(this.response);
     if (repoRequest.status >= 200 && repoRequest.status < 400) {
         data.forEach(repo => {
-            const grid = document.createElement('div');
-            grid.setAttribute('class', 'col-md-4 mt-3');
-
             const card = document.createElement('div');
-            card.setAttribute('class', 'card mb-4 shadow-sm');
+            card.setAttribute('class', 'card width-container mx-1');
 
             const cardBody = document.createElement('div');
-            cardBody.setAttribute('class', 'card-body');
+            cardBody.setAttribute('class', 'card-body mb-4 shadow-sm');
 
             const a = document.createElement('a');
             Object.assign(a, {href: repo.html_url, textContent: repo.name})
@@ -67,8 +36,7 @@ repoRequest.onload = function () {
             const span = document.createElement('span');
             Object.assign(span, {textContent: repo.description, className: 'd-block mt-2'})
 
-            repoRow.appendChild(grid);
-            grid.appendChild(card);
+            repoCard.appendChild(card);
             card.appendChild(cardBody);
             cardBody.appendChild(a);
             cardBody.appendChild(spanDate);
@@ -77,5 +45,4 @@ repoRequest.onload = function () {
     }
 }
 
-userRequest.send();
 repoRequest.send();

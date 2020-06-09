@@ -1,3 +1,23 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+.padding-y{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
 .rounded-circle {
     border-radius: 50% !important;
 }
@@ -15,6 +35,15 @@
     margin-top: 1rem !important;
 }
 
+.mx-1{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ml-2{
+    margin-left: 1rem !important;
+}
+
 .d-block {
     display: block;
 }
@@ -23,3 +52,70 @@
     background-color: #f8f9fa !important;
 }
 
+.text-center{
+    text-align: center;
+}
+
+.jumbotron{
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+@media (max-width: 576px){
+    .jumbotron {
+        padding: 4rem 2rem;
+    }
+    .displayCard{
+        display: block;
+    }
+    .width-container{
+        width: 100% !important;
+    }
+}
+
+
+@media (max-width: 425px){
+    .jumbotron {
+        padding: 4rem 2rem;
+    }
+    .displayCard{
+        display: block;
+    }
+    .width-container{
+        width: 100% !important;
+    }
+}
+
+.displayCard{
+    display: flex;
+}
+
+.width-container{
+    width: 33.33%;
+}
