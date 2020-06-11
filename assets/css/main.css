@@ -13,6 +13,10 @@ body {
     background-color: #fff;
 }
 
+a{
+    text-decoration: none;
+}
+
 .padding-y{
     padding-left: 2rem;
     padding-right: 2rem;
@@ -35,9 +39,8 @@ body {
     margin-top: 1rem !important;
 }
 
-.mx-1{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+.mxy-1{
+    margin: 1rem;
 }
 
 .ml-2{
@@ -114,8 +117,16 @@ body {
 
 .displayCard{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .width-container{
-    width: 33.33%;
+    width: 30%;
+}
+
+.repo-link{
+    font-size: 20px;
+    text-transform: capitalize;
+    color: #000;
+    text-decoration: none;
 }
